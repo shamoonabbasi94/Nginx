@@ -1,0 +1,54 @@
+/usr/local/bin/uwsgi
+
+WorkingDirectory=project_folder_path
+Environment="PATH=virtual_env_path"
+ExecStart=/usr/local/bin//uwsgi  --ini ini_file_path
+
+ExecStart=/usr/local/bin/uwsgi  --ini ini_file_path
+
+
+Environment="PATH=/home/shamoon/Documents/Vertex_SignedOff_uwsgi/rbs/bin"
+
+
+
+
+[Unit]
+
+Description=uWSGI instance to serveYour Project
+
+After=network.target
+
+[Service]
+
+Type=simple
+
+User=root
+
+Group=www-data
+
+WorkingDirectory=folder_path
+
+Environment="PATH=virtual_env_path"
+
+ExecStart=/usr/local/bin/uwsgi  --ini path_of_ini_file
+
+Restart=on-failure
+
+RestartSec=10
+
+
+[Install]
+
+WantedBy=multi-user.target
+
+
+
+etc/systemd/system directory
+to avoid unit failed
+systemctl daemon-reload
+---------------------------
+sudo systemctl start servicename.service
+sudo systemctl enable servicename.service
+sudo systemctl stop servicename.service
+sudo nginx -t # to verify the configuration
+sudo nginx restart # to restart the nginx
